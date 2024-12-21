@@ -1,0 +1,8 @@
+out/
+META-INF/
+.idea/
+.gradle/
+application.log*
+src/main/generated/
+build/
+

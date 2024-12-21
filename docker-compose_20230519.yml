@@ -1,0 +1,55 @@
+#version: '3.4'
+#services:
+#  jira:
+#    ports:
+#      - "8085:8080"
+#    image: cptactionhank/atlassian-jira:7.9.2
+#    restart: always
+#    links:
+#      - database
+#    volumes:
+#      - jira-data:/var/atlassian/jira
+#
+#  confluence:
+#    image: cptactionhank/atlassian-confluence:6.9.0
+#    restart: always
+#    links:
+#      - database
+#    volumes:
+#      - confluence-data:/var/atlassian/confluence
+#
+#  database:
+#    ports:
+#      - "5432:5432"
+#    image: postgres:9.4
+#    restart: always
+#    environment:
+#      POSTGRES_PASSWORD: 1
+#      POSTGRES_DB: study-center
+#      POSTGRES_USER: postgres
+#    volumes:
+#      - database-data:/var/lib/postgresql/data
+#
+##volumes:
+##  - jira-data:D:\\jira-volumes\\jira-data
+##  - confluence-data:D:\\jira-volumes\\confluence-data
+##  - database-data:D:\\jira-volumes\\database-data
+#volumes:
+#  jira-data:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      device: D:\\jira-volumes\\jira-data
+#  confluence-data:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      device: D:\\jira-volumes\\confluence-data
+#  database-data:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      device: D:\\jira-volumes\\database-data

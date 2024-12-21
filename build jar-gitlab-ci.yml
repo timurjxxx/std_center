@@ -1,0 +1,30 @@
+#image: docker:20.10.16
+#
+##services:
+##  - docker:20.10.16-dind
+#
+#stages:
+#  - stop-build-deploy
+#
+#stop build deploy job:
+#  image: gradle:7.6.1-jdk17
+#  stage: stop-build-deploy
+#  script:
+#    - echo starting undeploy job...
+##    - docker compose -f study-center-compose.yml down
+#    - echo stop-service job finished.
+#
+#    - echo starting build-image job...
+##    - docker build -t study-center-api:v1.0.0 .
+#    - echo build-image job finished.
+#    - gradle clean build -x test
+#    - ls -al
+#    - echo build-image job finished.
+#    - ls -al build/libs/
+#
+#
+##    - echo starting deploy job...
+##    - docker compose -f study-center-compose.yml up -d
+##    - echo deploy job finished.
+#  only:
+#    - main

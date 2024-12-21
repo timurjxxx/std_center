@@ -1,0 +1,55 @@
+image: docker:20.10.16-dind
+
+stages:
+  - stop-service
+#  - build-image
+#  - deploy
+
+stop_service_job:
+  stage: stop-service
+  script:
+    - echo starting undeploy job...
+    - docker compose -f study-center-api-compose.yml down
+    - echo top-service job finished.
+
+    - echo starting build-image job...
+    - docker build -t study-center-api:v1.0.0 .
+    - echo build-image job finished.
+
+    - echo starting deploy job
+    - docker compose -f study-center-api-compose.yml up -d
+    - docker compose -f docker-compose-redis.yml up -d
+    - docker compose -f docker-compose-rabbitmq.yml up -d
+#    - docker rmi $(docker images -f "dangling=true" -q)
+    - docker ps --no-trunc --all --quiet --filter="status=exited" | xargs --no-run-if-empty docker rm
+    - docker images --no-trunc --all --quiet --filter="dangling=true" | xargs --no-run-if-empty docker rmi
+#    - docker exec -it nginx-prxy-cont nginx -s reload
+    - docker builder prune -f
+    - echo deploy job finished.
+  only:
+    - master
+    - develop
+
+#build_image:
+#  stage: build-image
+#  script:
+#    - echo starting build-image job...
+#    - docker build -t study-center-api:v1.0.0 .
+#    - echo build-image job finished.
+#
+#deploy_job:
+#  stage: deploy
+#  script:
+#    - echo starting deploy job...
+#    - docker compose -f study-center-api-compose.yml up -d
+#    - echo deploy job finished.
+##  when: manual
+#  only:
+#    - master
+#  needs: ["stop_service_job", "build_image"]
+
+#  needs:
+#    - job: build_image
+#      optional: true
+#    - job: undeploy_job
+#      optional: true

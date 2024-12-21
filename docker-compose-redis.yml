@@ -1,0 +1,16 @@
+version: "3.6"
+services:
+  redis:
+    image: redis:6.2.5
+    container_name: "redis-cont"
+    restart: always
+    environment:
+      - REDIS_PASSWORD=redis_password_2023
+#    ports:
+#      - "6379:6379"
+    networks:
+      - redis_net
+networks:
+  redis_net:
+    name: common-bridge
+    external: true

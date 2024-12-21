@@ -1,0 +1,30 @@
+version: "3.6"
+services:
+  app:
+    image: study-center-api:v1.0.0
+    container_name: study-center-api-cont
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://study-center-db:5432/study-center
+      SPRING_DATASOURCE_USERNAME: db_username
+      SPRING_DATASOURCE_PASSWORD: db_userpassword
+    ports:
+      - "8082:8080"
+    deploy:
+        resources:
+            limits:
+              cpus: "2"
+              memory: 1GB
+            reservations:
+              cpus: "2"
+              memory: 1GB
+    networks:
+      - study-center
+networks:
+  study-center:
+    name: common-bridge
+    external: true
+
+# docker compose -f study-center-api-compose.yml up -d
+# docker compose -f study-center-api-compose.yml down
+# docker logs -f study-center-api-cont

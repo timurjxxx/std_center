@@ -1,0 +1,21 @@
+#version: "3.9"
+#services:
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: study-center-api
+#    restart: always
+#    environment:
+#      DATABASE_HOST: 1
+#      DATABASE_PORT: 5432
+#      DATABASE_NAME: study-center
+#      DATABASE_USER: postgres
+#      DATABASE_PASSWORD: 1
+#    ports:
+#      - "8080:8080"
+##    depends_on:
+##      - db
+##
+#volumes:
+#  app-study-center-api-data:

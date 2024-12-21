@@ -1,0 +1,58 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.5'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.api.studycenter'
+version = '0.0.1'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'javax.xml.bind:jaxb-api:2.2.7'
+	implementation 'com.sun.xml.bind:jaxb-impl:2.2.5-b10'
+	implementation 'org.projectlombok:lombok:1.18.20'
+	implementation 'org.mapstruct:mapstruct:1.5.4.Final'
+	implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.2'
+	//implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.7.3'
+// messaging
+	implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.2'
+	implementation 'org.telegram:telegrambots-spring-boot-starter:6.1.0'
+//	implementation 'com.google.firebase:firebase-admin:9.1.1'
+//
+//caching
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+//	implementation 'io.lettuce:lettuce-core'
+
+	implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+	//implementation 'org.springdoc:springdoc-openapi-ui:1.5.10'
+    implementation 'org.jetbrains:annotations:24.0.0'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.4.Final'
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+	runtimeOnly 'org.postgresql:postgresql'
+//	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+tasks.named("jar") {
+	enabled = false
+}

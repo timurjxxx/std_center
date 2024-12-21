@@ -1,0 +1,21 @@
+version: "3.6"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: "rabbitmq-cont"
+    restart: always
+#    ports:
+#      - 5675:5672
+#      - 15675:15672
+    volumes:
+      - /unlimit-docker-volumes/rabbitmq/data/:/var/lib/rabbitmq/
+      - /unlimit-docker-volumes/rabbitmq/log/:/var/log/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin_rabbitmq
+      - RABBITMQ_DEFAULT_PASS=admin_rabbitmq_2023
+    networks:
+      - rabbitmq_go_net
+networks:
+  rabbitmq_go_net:
+    name: common-bridge
+    external: true

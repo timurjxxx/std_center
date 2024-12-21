@@ -1,0 +1,9 @@
+1. create local image for docker compose with filename
+docker-compose -f /path/to/my-docker-compose.yml up
+
+2. create image with tag
+docker build -t study-center:v1.0.0 .
+
+3. push image to hub.docker.com
+docker push leaderunlimit/study-center
+

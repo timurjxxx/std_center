@@ -1,0 +1,23 @@
+#version: '3.8'
+#services:
+#  jira:
+#    image: atlassian/jira-software:latest
+#    ports:
+#      - 8888:8080
+#    volumes:
+#      - jira_data:/var/atlassian/application-data/jira
+#    environment:
+#      - JVM_MINIMUM_MEMORY=1024m
+#      - JVM_MAXIMUM_MEMORY=4096m
+#      - ATL_DB_TYPE=postgresql
+#      - ATL_JDBC_URL=jdbc:postgresql://localhost:5432/jira
+#      - ATL_JDBC_USER=postgres
+#      - ATL_JDBC_PASSWORD=1
+#    networks:
+#      - jira_network
+#
+#networks:
+#  jira_network:
+#
+#volumes:
+#  jira_data:

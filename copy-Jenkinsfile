@@ -1,0 +1,35 @@
+pipeline {
+    agent {
+        docker { image 'docker:20.10.16-dind' }
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                docker info
+                echo 'Building..'
+                
+                script {
+                    docker info
+                    def test = 2 + 2 > 3? 'cool ++++': 'not coll'
+                    
+                    echo test
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
+
+node {
+    //groovy scripts
+}
